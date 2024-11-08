@@ -25,6 +25,8 @@ sudo apt update
 sudo apt install -y openssl coreutils qrencode pandoc poppler-utils xclip zbar-tools fswebcam
 ```
 
+## Usage
+
 Create a AES encrypted bitcoin paper wallet from your seed phrase. If necessary, edit the `instructions.md` file to add additional instructions. Also edit `walletinfo.md` to add your wallet info.
 
 Edit `secret` file and input your backup seed phrase, then run the `paperwallet.sh` script:
