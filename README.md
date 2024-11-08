@@ -8,6 +8,8 @@ Edit `secret` file and input your backup seed phrase, then run the `paperwallet.
 $ ./paperwallet.sh
 ```
 
+![PDF of the paperwallet created](paperwallet.png)
+
 To retrieve the backup seed open the PDF file to copy (screenshot) the QR code or use the webcam to capture the QR code on paper. 
 
 For using a screenshot of the PDF file, do:
