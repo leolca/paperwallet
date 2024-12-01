@@ -15,6 +15,7 @@ To run the scripts, you'll need the following packages installed on your Linux s
 - `xclip`
 - `zbar-tools`
 - `fswebcam`
+- `ssss`
   
 ### Installing Dependencies
 
@@ -22,17 +23,36 @@ You can install all required packages by running the following command (on Debia
 
 ```bash
 sudo apt update
-sudo apt install -y openssl coreutils qrencode pandoc poppler-utils xclip zbar-tools fswebcam
+sudo apt install -y openssl coreutils qrencode pandoc poppler-utils xclip zbar-tools fswebcam ssss
 ```
+
+## Types of paper wallet
+
+The `paperwallet.sh` script implements the creation of 4 different types paper wallets:
+
+1. <a id="plaintextwallet"></a> seed plain text encoded in base64;
+2. <a id=aeswallet"></a> AES encrypted seed encoded in base64;
+3. <a id=ssswallet"></a> seed split in parts using Shamir's secret sharing scheme;
+4. <a id=sssaeswallet"></a> seed split in parts using Shamir's secret sharing scheme and also using AES encryption with a different key for each part.
 
 ## Usage
 
-Create a AES encrypted bitcoin paper wallet from your seed phrase. If necessary, edit the `instructions.md` file to add additional instructions. Also edit `walletinfo.md` to add your wallet info.
+Create a AES encrypted bitcoin paper wallet from your seed phrase. If necessary, edit the `instructions` markdown file to add additional instructions. 
+
+- `instructions.md` for the [plain text wallet](#plaintextwallet);
+- `instructions_encrypted.md` for the [AES wallet](#aeswallet);
+- `instructions_sss.md` for the [Shamir's wallet](#ssswallet);
+- `instructions_encsss.md` for the [Shamir's AES wallet](#sssaeswallet).
+
+Also edit `walletinfo.md` to add your wallet info.
 
 Edit `secret` file and input your backup seed phrase, then run the `paperwallet.sh` script:
 
 ```bash
-$ ./paperwallet.sh
+$ ./paperwallet.sh -n    # plain text wallet
+$ ./paperwallet.sh       # AES encrypted wallet (default)
+$ ./paperwallet.sh -s -n # Shamir's wallet
+$ ./paperwallet.sh -s    # Shamir's AES wallet
 ```
 
 ![PDF of the paperwallet created](paperwallet.png)
@@ -49,3 +69,4 @@ For use the backup paper and your webcam, do:
 ```bash
 $ ./qrcode_decode.sh webcam
 ```
+The PDF contains the instructions to retrieve the seed.

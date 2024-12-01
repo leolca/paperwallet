@@ -65,23 +65,26 @@ create_default_wallet() {
 
 # Function to print the usage message
 usage() {
-    echo "Usage: $0 [-s|--shamir] [--noencryption]"
+    echo "Usage: $0 [-s|--shamir] [-n|--noencryption] [-h|--help]"
     echo
     echo "Options:"
     echo "  -s, --shamir       Use Shamir's Secret Sharing method"
     echo "  -n, --noencryption Disable encryption (default is enabled)"
-    echo "  --help             Display this help message"
+    echo "  -h, --help         Display this help message"
     exit 1
 }
 
 # Parse options
-while getopts "s-:n-:" opt; do
+while getopts "snh-:" opt; do
     case "$opt" in
         s)
             use_shamir=true
             ;;
         n)
             encrypt=false  # User passed --noencryption
+            ;;
+        h)
+            usage
             ;;
         -)
             case "${OPTARG}" in
