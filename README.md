@@ -30,10 +30,10 @@ sudo apt install -y openssl coreutils qrencode pandoc poppler-utils xclip zbar-t
 
 The `paperwallet.sh` script implements the creation of 4 different types paper wallets:
 
-1. <a id="plaintextwallet"></a> seed plain text encoded in base64;
-2. <a id=aeswallet"></a> AES encrypted seed encoded in base64;
-3. <a id=ssswallet"></a> seed split in parts using Shamir's secret sharing scheme;
-4. <a id=sssaeswallet"></a> seed split in parts using Shamir's secret sharing scheme and also using AES encryption with a different key for each part.
+1. seed plain text encoded in base64; {#plaintextwallet}
+2. AES encrypted seed encoded in base64; {#aeswallet}
+3. seed split in parts using Shamir's secret sharing scheme; {#ssswallet}
+4. seed split in parts using Shamir's secret sharing scheme and also using AES encryption with a different key for each part. {#sssaeswallet}
 
 ## Usage
 
